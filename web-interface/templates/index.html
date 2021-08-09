@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel ="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<script type="text/javascript">
+                var intervalID = setInterval(update_values,1000);
+                $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+                function update_values() {
+                        $.getJSON($SCRIPT_ROOT + '/_stuff',
+
+                    function(data) {
+                        $('#result').text(data.result);
+                        console.log(data)
+                    });
+
+                    };
+</script>
+
+    <body onload="update_values();">
+        <div class="image">
+        <img src="{{url_for('static', filename='expsetup.png')}}">
+        </div>
+        <div class="tmp">
+        <p>The current temperature is:
+            <span id="result">?</span>
+        <script>
+            document.getElementById("result").innerHTML;
+        </script>
+    </p>
+
+<form action ="#" method="post">
+    <p>Temperature: </p>
+    <p><input type="number" name="tmp" /></p>
+    <p><input type="submit" value="submit" /></p>
+
+</form>
+<form method="get" action="/graph">
+    <button type="submit">graph</button>
+</form>
+</div>
+
+<div >
+<p>The current pump rate is: 0
+
+</p>
+
+<form action ="#" method="post">
+<p>Temperature: </p>
+<p><input type="number" name="tmp" /></p>
+<p><input type="submit" value="submit" /></p>
+
+</form>
+<button type="submit">graph</button>
+</form>
+</div>
+
+</body>
+
+</html>

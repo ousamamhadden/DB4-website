@@ -1,0 +1,17 @@
+body {
+  color: #000000;
+  height: 1000px;
+  width: 500px;
+}
+.image {
+  position: relative;
+  z-index: 0;
+}
+.tmp {
+  position: relative ;
+  left: 600px;
+  bottom: 400px;
+  background-color:  #F0FFFF;
+  z-index: 100;
+  width: 250px;
+}
